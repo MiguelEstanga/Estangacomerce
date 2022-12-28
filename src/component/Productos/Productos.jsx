@@ -1,87 +1,62 @@
 import React from 'react'
-import { Boton } from '../Wraper/WraperStyled'
-import { Box, Container, Detalles, Imagen, Titulo } from './ProductosStyled'
+import { Box, Container, Encabesado } from './ProductosStyled'
+import {useQuery} from "react-query"
+import { Spiner } from '../spiner/Spiner'
+import { peticiones } from '../helper/peticiones'
+import { ImagenProducto } from './Imagen'
+import { Datos } from './Datos'
+import { ProductosTemporales } from '../../bd/productosTemporal'
 
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Texto } from '../Redes/RedesStyled'
 
 export const Productos = () => {
-    const [data, setData] = useState([])
-    useEffect(function () {
-        fetch('https://servidorventacompu.herokuapp.com/CompuData')
-            .then(res => res.json())
-            .then(res => {
-                setData(res)
-            })
+    //const { isLoading , error , data} = useQuery("Productos" , () => peticiones("http://localhost:4000/CompuData/") )
+   /*
+    if(isLoading){
+        return <Spiner/>
+    }
 
-    }, [])
+    if(error){
+        return <p>error {error}</p>
+    }
+  */
+    console.log(ProductosTemporales)
     return (
         <>
-            <Texto
-                b='#D0D3D4'
-                color='#000'
-            >
-                Productos
-            </Texto>
+            <Encabesado>
+                 Productos
+            </Encabesado>
             <Container id='productos'>
 
+           
                 {
+                    
+                    ProductosTemporales && ProductosTemporales?.map(d => (
 
-                    data && data?.map(d => (
-
-
-                        <Box key={d._id}>
-                            <Titulo>
-                                <div className="disponibilidad">
-                                   
-                                    {d.tipo == 0? 'Disponible en Maturin':'Disponible por Encargo'}<br/>
-                                    {d.Nombre}
-                                </div>
-                             
-                                <div className="precio">
-                                    {d.Precio}$
-                                </div>
-                            </Titulo>
-                            <Imagen>
-                                <img src={d.Imagenprincipa} alt="laptop" />
-                            </Imagen>
-                            <Detalles>
-                                <Boton
-                                    w="150px"
-                                    h="70px"
-
-                                >
-                                    <Link
-                                        to={`Detalles/${d._id}`}
-
-                                    >
-                                        Detalles
-                                    </Link>
-                                </Boton>
-                                <div className="contacto">
-
-                                    <div>
-                                        <a href={`https://wa.me/58${d.ws}`} target="_black">
-                                            <ion-icon name="logo-whatsapp"></ion-icon>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href={d.Faceboock} target="_black">
-                                            <ion-icon name="logo-facebook"></ion-icon>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                            </Detalles>
-
-                        </Box>
+                     (   <Box
+                            data-aos="fade-up"
+                            data-aos-offset="200"
+                            data-aos-delay="10"
+                            data-aos-duration="1000"
+                            data-aos-easing="ease-in-out"
+                            key={d._id}
+                          >
+                            <ImagenProducto 
+                              imagen={d.Imagenprincipa}
+                              id={d._id}
+                              Ws={d.Ws}
+                              Facebook ={d.Facebook}
+                            />
+                            <Datos
+                                tipo={d.tipo}
+                                Precio={d.Precio}
+                                Nombre={d.Nombre}
+                               
+                            />
+                           
+                        </Box >)
                     ))
                 }
-            </Container>
+            </Container >
         </>
     )
 }

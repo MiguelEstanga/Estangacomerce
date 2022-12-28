@@ -1,14 +1,17 @@
 import React from 'react'
-import { Texto } from '../QuienesSomos/Styled'
-import { Container, Imagen } from '../Wraper/WraperStyled'
+import { Navegacion } from '../Navegacion/Navegacion'
+import { Texto,Imagen , Container } from '../QuienesSomos/Styled'
+
 
 export const ComoComprar = () => {
     return (
         <Container>
+            <Navegacion/>
             <Imagen>
                 <img src="https://res.cloudinary.com/dmrkgkvpo/image/upload/v1666556399/como_l1wn5c.png" alt="Como comprar" />
             </Imagen>
             <Texto>
+                <h1>Como Comprar</h1>
                 <p>
 
                     Es muy fácil como no contamos con pasarelas de pago electrónica

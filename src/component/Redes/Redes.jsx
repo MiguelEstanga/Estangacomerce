@@ -4,9 +4,7 @@ import { BoxRedes, Container, Texto } from './RedesStyled'
 export const Redes = () => {
     return (
         <Container id='redes'>
-            <Texto>
-                Compatarnos en Redes sociales Para llegar a mas personas
-            </Texto>
+            
             <BoxRedes>
                 <div>
                     <a href="https://api.whatsapp.com/send/?text=https://miguelestanga.netlify.app/" target="_black">
@@ -22,7 +20,6 @@ export const Redes = () => {
             </BoxRedes>
             <Texto>
                 Este sitio web fue diceñado por Miguel Estanga
-
             </Texto>
             <Texto>
                 <div>

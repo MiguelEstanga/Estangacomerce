@@ -1,17 +1,21 @@
 import React from 'react'
-import { Container, Imagen } from '../Wraper/WraperStyled'
-import { Texto } from './Styled'
-import {Link } from 'react-router-dom'
+import { Navegacion } from '../Navegacion/Navegacion'
+
+import { Texto , Container , Imagen} from './Styled'
 
 export const QuienesSomos = () => {
   return (
     <Container>
+      <Navegacion/>
      <Imagen>
         <img 
           src="https://res.cloudinary.com/dmrkgkvpo/image/upload/v1666500918/quienes_eyznig.png"
          alt="quienes Somos" />
       </Imagen> 
       <Texto>
+        <h1>
+            Quienes Somos
+        </h1>
         <p>
           Somos vendedores de ordenadores en la ciudad de Maturín, distribuimos los equipos en el centro,
           los productos que vendemos son trasladados desde la ciudad Caraca hasta la ciudad de Maturín a través de
@@ -31,9 +35,7 @@ export const QuienesSomos = () => {
           para cualquier duda comuniquese al 04263821517
         </p>
 
-        <div>
-            <Link to='/'>volver al inicio</Link>
-        </div>
+        
       </Texto>
     </Container>
   )

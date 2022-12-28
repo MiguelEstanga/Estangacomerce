@@ -2,115 +2,120 @@ import styled from "styled-components";
 
 export const Container = styled.section`
     width: 100%;
-    background: #D0D3D4;
+    background: #FBFCFC;
     display: grid;
     padding: 10px;
-    grid-template-columns: repeat(auto-fill,minmax(min(600px, 50%) , 2fr ));
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fit , minmax(400px , 1fr));
+    
     padding: 10px;
     gap: 10px;
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(1,1fr);
+    }
 `
 
 export const Box = styled.div`
     width:500px;
-    height: 600px;
+    height: 500px;
     margin-top: 10px;
-    box-shadow: 10px 10px 10px rgba(0,0,0,.7);
+    box-shadow: 1px 1px 10px rgba(0,0,0,.7);
+    
     margin: auto;
     display: grid;
-    grid-template-rows: 20% 50% 30%;
     background-color: #fff;
+    grid-template-rows: 80% 20%;
+    overflow: hidden;
 
+
+    &:hover{
+        border: solid 1px black;
+    }
+    &:hover #detalles{
+        opacity: 1;
+    }
+    &:hover img{
+        transform: scale(1.1);
+    }
     @media (max-width: 900px) {
         width: 100%;
     }
 `
 export const Titulo = styled.div`
     width: 100%;
-    height:40px ;
+    height:100% ;
     font-size: 30px;
-    font-weight: 600;
-   
+    font-weight: 100;
     display: grid;
     place-items: center;
+    top: 0;
+    transition-delay:  500ms;
+    z-index: 1;
+   
     .disponibilidad{
-        font-size: 20px;
-        color: #D35400;
+        font-size: 17px;
+        font-weight: 100;
+        color: #000;
         text-align: center;
-        transition: all linear 3s;
-        transform-origin: left;
-        animation: texto 2s infinite;
-
-        @keyframes texto {
-            0%{
-                text-shadow: 0 0 10px #D35400 , 0 0 20px #D35400 , 0 0 40px #D35400 , 0 0 50px #D35400;
-
-            }   
-            100%{
-                text-shadow: 0;
-            }
-        }
     }
-    .precio{
-        color: #28B463;
-        font-size: 30px;
-        font-weight: 900;
-    }
+   
 `
 export const Imagen = styled.div`
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
     background: black;
-        transition: all 200ms linear;
+    
+    position: relative;
     img{
         width: 100%;
-        height: 100%;
+        height: 100%;   
+       
     }
-   &:hover{
-    transform: scale(1.1);
-   }
+  
 `
 
 export const Detalles = styled.div`
     width: 100%;
+    height: 90px;
+    position: absolute;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    z-index: 2;
+    opacity: 0;
+    font-size: 40px;
+   
+ 
     a{
         color: #fff;
         text-decoration: none;
     }
-    .contacto{
-       
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        padding: 4px;
-        div{
-            border-radius: 5px;
-            width: 140px;
-            height: 60px;
-            background-color: #3498DB;
-            
-            display: inline-block;
 
-            &:nth-child(1){
-                background-color: #28B463;
-            }
-            a{
-                text-decoration: none;
-                color: #1C2833;
-                
-                width: 100%;
-                height: 100%;
-                padding: 3px 0;
-            }
-            ion-icon{
-                font-size: 50px;
-                color: #fff;
-                text-align: center;
-                width: 100%;
-            }
-        }
+    @media (max-width: 900px) {
+        opacity: 1;
+    }
+    
+    
+`
+export const Encabesado = styled.div`
+    font-size: 50px;
+    font-weight: 300;
+    color: #000;
+    text-align: center;
+    background-color: #FBFCFC;
+    position: relative;
+    margin-top: 20px;
+    &::before{
+        position: absolute;
+        content: '';
+        width: 13%;
+        height: 1px;
+        border: solid 1px black;
+        bottom: 0;
     }
 `

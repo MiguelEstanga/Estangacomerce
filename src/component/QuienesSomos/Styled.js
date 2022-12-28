@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Texto = styled.div`
     width: 100%;
     height: 100%;
@@ -18,4 +19,28 @@ export const Texto = styled.div`
             color: #000;
         }
     }
+`
+
+export const Container = styled.div`
+    width: 100vw;
+
+    display: grid;
+    grid-template-rows: repeat(1,1fr);
+    @media (min-width: 950px) {
+        margin-top: 100px;
+        grid-template-columns: repeat(2,1fr);
+    }
+`
+
+export const Imagen = styled.div`
+    
+    img{
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width: 950px) {
+        margin-top: 100px;
+    
+    }    
 `

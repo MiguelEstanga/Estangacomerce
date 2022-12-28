@@ -8,4 +8,5 @@ export const GlobalStyle = createGlobalStyle`
         transition:all 300ms linear;
         font-weight: 100;
      }
+
 `

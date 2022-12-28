@@ -2,16 +2,31 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    height: 65px;
-    
+    height: 100px;
+    background-color: #fff;
     position: fixed;
     top: 0;
     z-index: 1000;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    background: #D4AC0D;
-  
+    @media (min-width: 900px) {
+        &.active{
+            background-color: #D0D3D4;
+        }
+    }
+ 
+    .Logo{
+        display: none;
+    }
+    &::before{
+        content:'' ;
+        position: absolute;
+        bottom: 0;
+        width: 90%;
+        border: solid 1px black;
+    }
+
     .burger{
        
         width: 60px;
@@ -34,6 +49,9 @@ export const Container = styled.div`
         }
         &.active{
            .rayas{
+                color: #000;
+               
+                z-index: 20;
                 &:nth-child(1){
                     transform: rotate(45deg);
                 }
@@ -50,6 +68,19 @@ export const Container = styled.div`
 
         @media (max-width: 950px) {
             display: flex;
+        }
+    }
+
+    
+    @media (max-width: 900px) {
+        height: 80px;     
+        justify-content:space-between ;
+        .Logo{
+            display: block;
+            z-index: 1003;
+        }
+        &::before{
+            width: 100%;
         }
     }
     
@@ -72,8 +103,8 @@ export const Box =styled.div`
 `
 
 export const Ul =styled.ul`
- 
-     z-index: 1001;
+  
+     z-index: 30;
      width: 100%;
      list-style: none;
      display: flex;
@@ -81,14 +112,58 @@ export const Ul =styled.ul`
      justify-content: space-around;
      align-items: center;
      transform-origin: left;
-  
-     li{
-    
+    .Logo{
+        display: flex;
+    }
+    .email{
+        cursor: pointer;
+        font-size: 20px;
+        margin-left :20px ;
         width: 100%;
         height: 100%;
-        display: grid;
-        place-items: center;
-       
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover{
+            background: #17202A;
+            color: #fff;
+        }
+        .opciones{
+            transition: 1s;
+            position: absolute;
+            bottom: -150px;
+            width: 300px;
+            opacity: 0;
+            display: none;
+            background-color: #212F3D;
+            .opcionesItems{
+                color: #fff;
+                width: 100%;
+                display: flex;
+                height: 80px;
+
+                justify-content: center;
+                align-items: center;
+                &:hover{
+                    background:rgba(0,0,0,.40);
+                }
+            }
+           &.active{
+            opacity: 1;
+            display: block;
+           } 
+        }
+    }  
+    .items{
+      
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        
         a{
             cursor: pointer;
             font-size: 20px;
@@ -96,21 +171,30 @@ export const Ul =styled.ul`
             text-decoration: none;
             color: #000;
         }
-
-        &:hover{
-            background-color: #198754;
+        &::before{
+            content:'' ;
+            position: absolute;
+            
+            bottom: 30px;
         }
+        &:hover::before{
+            width: 100%;
+            border:solid  1px #000;
+            height: 1px;
+        }
+    
      }
      @media (max-width: 950px) {
         position: absolute;
         height: 100vh;
-       
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,.70);
+        width: 100vw;
+        display: block;
+        background: #fff;
         flex-direction: column;
+        justify-content: center;
+        
+        left: 0;
+        top: 80px;
         
         opacity: 0;
         transform: translateX(-1990px);
@@ -118,15 +202,41 @@ export const Ul =styled.ul`
             opacity: 1;
             transform: translateX(0);
         }
-        li{
-            background-color: #D4AC0D;
-            padding: 0;
-            width: 110%;
+        .email{
+            width: 100%;
+            height: 80px;
+            justify-content: start;
+            align-items: start  ;
+            position: relative;
+            top: 70px;
+            left: -15px;
+        }
+        .Logo{
+                display: none;
+            }
             
-            height: 100%;
-
+        .items {
+            width: 100%;
+            height: 80px;
+            justify-content: start;
+            align-items: start  ;
+            position: relative;
+            top: 70px;
+            left: -15px;
+            
             a{
-                font-size: 30px;
+                font-size: 25px;
+                font-weight: 100;
+                text-align: start;
+                color: #000;   
+            }
+
+            &::before{
+                content:'' ;
+                position: absolute;
+                width: 100%;
+                background: rgba(0,0,0,.40);
+                height: 1px;
             }
         }
      }
